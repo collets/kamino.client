@@ -11,7 +11,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class FirebaseAuthService implements BaseAuthService {
 
   private _state: IFirebaseAuthServiceState;
-  private _logged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
+  private _logged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean|null>(null);
 
   constructor(
     private _angulaFireAuth: AngularFireAuth
