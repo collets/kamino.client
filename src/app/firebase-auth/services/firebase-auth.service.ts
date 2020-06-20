@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { IFirebaseAuthServiceState } from '../interfaces/firebase-auth.state.interface';
 import { User } from 'firebase';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class FirebaseAuthService implements BaseAuthService {
   private _logged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean|null>(null);
 
   constructor(
-    private _angulaFireAuth: AngularFireAuth
+    private _angulaFireAuth: AngularFireAuth,
+    private _router: Router
   ) { 
     this._angulaFireAuth.user.subscribe((user: User|null) => {
       this._updateState({
@@ -41,6 +43,7 @@ export class FirebaseAuthService implements BaseAuthService {
   async logout(): Promise<void> {
     try {
       await this._angulaFireAuth.signOut();
+      this._router.navigate(['/admin']);
     } catch(e) {
       console.log('There was an unexpected error. Please contact the support.'); 
     }
