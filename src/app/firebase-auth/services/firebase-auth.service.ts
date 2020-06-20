@@ -38,16 +38,12 @@ export class FirebaseAuthService implements BaseAuthService {
     }
   }
 
-  async logout(): Promise<boolean | string> {
+  async logout(): Promise<void> {
     try {
       await this._angulaFireAuth.signOut();
-      return true;
     } catch(e) {
-      return 'There was an unexpected error. Please contact the support.' 
+      console.log('There was an unexpected error. Please contact the support.'); 
     }
-  }
-  forgotPassword(email: any) {
-    throw new Error("Method not implemented.");
   }
 
   private _updateState(state: IFirebaseAuthServiceState) {

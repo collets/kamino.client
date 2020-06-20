@@ -5,6 +5,5 @@ import { Observable } from 'rxjs';
 export abstract class BaseAuthService {
     abstract get logged$(): Observable<boolean>;
     abstract async login(email, password): Promise<boolean | string>;
-    abstract async logout(): Promise<boolean | string>;;
-    abstract forgotPassword(email);
+    abstract async logout(): Promise<void>;
 }
