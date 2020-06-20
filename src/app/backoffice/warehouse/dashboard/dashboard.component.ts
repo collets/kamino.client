@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BaseAuthService } from 'src/app/core/interfaces/base-auth-service';
 
 @Component({
   selector: 'kmn-dashboard',
@@ -8,8 +9,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _authService: BaseAuthService) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this._authService.logout();
   }
 }

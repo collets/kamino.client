@@ -1,0 +1,31 @@
+.login-page,
+.login-form {
+    height: 100%;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 400px;
+}
+
+.login-header {
+    display: flex;
+    justify-content: center;
+}
+
+.login-content {
+    padding: 15px 0 0 0;
+}
+
+.login-form__field {
+    width: 100%;
+}
+
+.login-spinner {
+    margin: auto;
+}

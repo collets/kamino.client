@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FirebaseAuthModule } from './firebase-auth/firebase-auth.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     CoreModule,
     AuthModule,
-    FirebaseAuthModule
+    FirebaseAuthModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

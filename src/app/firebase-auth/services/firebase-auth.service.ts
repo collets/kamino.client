@@ -43,7 +43,7 @@ export class FirebaseAuthService implements BaseAuthService {
   async logout(): Promise<void> {
     try {
       await this._angulaFireAuth.signOut();
-      this._router.navigate(['/admin']);
+      this._router.navigate(['auth']);
     } catch(e) {
       console.log('There was an unexpected error. Please contact the support.'); 
     }
