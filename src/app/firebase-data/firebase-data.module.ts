@@ -5,6 +5,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirebaseWarehouseEntriesService } from './services/warehouse-entries/firebase-warehouse-entries.service';
+import { FirebaseProductStocksService } from './services/product-stocks/firebase-product-stocks.service';
 
 
 
@@ -21,6 +23,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [ FirebaseProductsService ]
+  providers: [ 
+    FirebaseProductsService,
+    FirebaseWarehouseEntriesService,
+    FirebaseProductStocksService
+  ]
 })
 export class FirebaseDataModule { }

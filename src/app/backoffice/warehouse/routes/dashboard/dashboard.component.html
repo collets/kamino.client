@@ -1,0 +1,30 @@
+<mat-sidenav-container>
+    <mat-sidenav class="sidebar" mode="side" opened [fixedInViewport]="true">
+        <kmn-sidebar></kmn-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <div class="products">
+            <div class="content-actions">
+                <button mat-button cdkFocusInitial (click)="addProduct()">
+                    <mat-icon matSuffix class="material-icons-outlined">add</mat-icon> Add new product
+                </button>
+            </div>
+            <kmn-products-table
+                (productStockSelected)="selectProductStock($event)"                
+                (openAddQuantityModalClicked)="addEntry($event)"
+                (openUpdateModalClicked)="openUpdateModal($event)">
+            </kmn-products-table>
+        </div>
+        <div class="warehouse-entries">
+            <ng-container *ngIf="selectedProductId">
+                <div class="content-actions">
+                    <button mat-button cdkFocusInitial (click)="addEntry()">
+                        <mat-icon matSuffix class="material-icons-outlined">add</mat-icon> Add quantity
+                    </button>
+                </div>
+                <kmn-warehouse-entries-table [productId]="selectedProductId"
+                    (openUpdateModalClicked)="openUpdateQuantityModal($event)"></kmn-warehouse-entries-table>
+            </ng-container>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

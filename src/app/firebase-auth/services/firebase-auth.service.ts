@@ -31,6 +31,10 @@ export class FirebaseAuthService implements BaseAuthService {
     return this._logged$.asObservable();
   }
 
+  public get loggedUser(): User | null {
+    return this._state.user;
+  }
+
   async login(email: any, password: any): Promise<boolean | string> {
     try {
       await this._angulaFireAuth.signInWithEmailAndPassword(email, password);

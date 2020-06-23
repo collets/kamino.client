@@ -1,5 +1,6 @@
-export interface Product {
+export interface IProduct {
     id?: string;
     name: string;
     basePrice: number;
+    ingredients: string;
 }

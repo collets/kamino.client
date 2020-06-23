@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>
+    <ng-container *ngIf="data; else newTitle">Edit {{data.name}}</ng-container>
+    <ng-template #newTitle>New product</ng-template>
+</h1>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div mat-dialog-content>
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" [formControl]="name">
+            <mat-error *ngIf="name?.errors?.required">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Base price</mat-label>
+            <input matInput placeholder="Base price" [formControl]="basePrice">
+            <mat-error *ngIf="basePrice?.errors?.required">Base price is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Ingredients</mat-label>
+            <textarea rows="5" matInput placeholder="Ingredients" [formControl]="ingredients"></textarea>
+            <mat-error *ngIf="ingredients?.errors?.required">Ingredients are required</mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button type="button" (click)="close()">Annulla</button>
+        <button mat-button cdkFocusInitial type="submit" (click)="save()" [disabled]="form.invalid">Salva</button>
+    </div>
+</form>

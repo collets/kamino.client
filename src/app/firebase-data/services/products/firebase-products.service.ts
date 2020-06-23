@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { IProductService } from 'src/app/core/interfaces/products/products.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Product } from 'src/app/core/interfaces/products/product';
+import { IProduct } from 'src/app/core/interfaces/products/product';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DocumentChangeAction, Action, DocumentSnapshot, QueryDocumentSnapshot } from '@angular/fire/firestore/interfaces';
 import { IFirebaseDataService } from '../../interfaces/IFirebaseDataService.service';
+import { IProductFilters } from 'src/app/core/interfaces/products/product-filters';
 
 @Injectable()
-export class FirebaseProductsService extends IFirebaseDataService<Product> {
+export class FirebaseProductsService extends IFirebaseDataService<IProduct, IProductFilters> {
 
   protected COLLECTION_ID: string = 'products';
   
@@ -16,20 +16,22 @@ export class FirebaseProductsService extends IFirebaseDataService<Product> {
     super();
   }
 
-  public async create(product: Product): Promise<string> {
+  public async create(product: IProduct): Promise<string> {
+    delete product.id;
+    
     const result = await this._angularFirestore.collection(this.COLLECTION_ID).add(product)
 
     return result.id;
   }
-  public get(id: string): Observable<Product> {
+  public get(id: string): Observable<IProduct> {
     return this._angularFirestore.collection(this.COLLECTION_ID).doc(id).snapshotChanges()
-      .pipe(map((value: Action<DocumentSnapshot<Product>>) => this._addIdToModel(id, value.payload.data())));
+      .pipe(map((value: Action<DocumentSnapshot<IProduct>>) => this._addIdToModel(id, value.payload.data())));
   }
-  public find(): Observable<Product[]> {
+  public find(filters: IProductFilters): Observable<IProduct[]> {
     return this._angularFirestore.collection(this.COLLECTION_ID).snapshotChanges()
-      .pipe(map((values: DocumentChangeAction<Product>[]) => values.map((value: DocumentChangeAction<Product>) => this._mapSnapshotToModel(value.payload.doc))));
+      .pipe(map((values: DocumentChangeAction<IProduct>[]) => values.map((value: DocumentChangeAction<IProduct>) => this._mapSnapshotToModel(value.payload.doc))));
   }
-  public update(product: Product) {
+  public update(product: IProduct) {
     const id = product.id;
     delete product.id;
     this._angularFirestore.doc(`${this.COLLECTION_ID}/${id}`).update(product);
