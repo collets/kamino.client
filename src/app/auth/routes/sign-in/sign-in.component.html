@@ -1,7 +1,7 @@
 <section class="login-page">
     <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-card class="login-card">
-            <mat-card-title class="login-header">
+            <mat-card-title class="login-header" [routerLink]="['/']">
             </mat-card-title>
             <mat-card-content class="login-content">
                 <mat-form-field class="login-form__field" appearance="outline">
