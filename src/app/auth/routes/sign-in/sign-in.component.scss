@@ -1,0 +1,36 @@
+.login-page,
+.login-form {
+    height: 100%;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 400px;
+}
+
+.login-header {
+    height: 175px;
+    background: url(/assets/images/logo/kamino-bakery-logo.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+.login-content {
+    padding: 15px 0 0 0;
+}
+
+.login-form__field {
+    width: 100%;
+}
+
+.login-spinner {
+    margin: auto;
+}

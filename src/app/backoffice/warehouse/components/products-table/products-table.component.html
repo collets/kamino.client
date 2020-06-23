@@ -1,0 +1,45 @@
+<mat-table class="products-table"  [dataSource]="dataSource" [trackBy]="trackBy">
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="basePrice">
+        <mat-header-cell *matHeaderCellDef> Base Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.basePrice | currency: 'EUR'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.quantity | number: '1.2-2' }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="actions-cell">
+            <button mat-icon-button
+                matTooltip="Add quantity to the product"
+                color="accent"
+                aria-label="Open the add quantity modal"
+                (click)="openAddQuantityModal(element.id, $event)">
+                <mat-icon class="material-icons-outlined">add</mat-icon>
+            </button>
+            <button mat-icon-button
+                matTooltip="Modify the product"
+                color="accent"
+                aria-label="Open the update modal"
+                (click)="openUpdateModal(element.id, $event)">
+                <mat-icon class="material-icons-outlined">create</mat-icon>
+            </button>
+            <button mat-icon-button
+                matTooltip="Remove the product"
+                color="accent"
+                aria-label="Delete the row"
+                (click)="onDeleteRow(element.id, $event)">
+                <mat-icon class="material-icons-outlined">delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="select(row)" [ngClass]="{'product-selected': row.id === selectedId}"></mat-row>
+</mat-table>
+
+<mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

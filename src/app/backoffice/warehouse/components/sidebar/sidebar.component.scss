@@ -1,0 +1,31 @@
+.sidebar-header,
+.sidebar-content {
+    padding: 15px;
+}
+
+.sidebar-header {
+    height: 100px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: flex-end;
+
+    border-bottom: 1px solid white;
+}
+
+.username-label {
+    font-size: 14px;
+}
+
+.sidebar-content {
+    height: calc(100% - 100px);    
+    box-sizing: border-box;
+
+    display: flex;
+}
+
+.log-button {
+    align-self: flex-end;
+    margin-right: 15px;
+    display: block;
+}
