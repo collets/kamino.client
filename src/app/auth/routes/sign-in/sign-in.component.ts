@@ -29,7 +29,7 @@ export class SignInComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    this._returnUrl = this._route.snapshot.queryParams['returnUrl'] ?? '/';
+    this._returnUrl = this._route.snapshot.queryParams['returnUrl'] ?? '/admin';
   }
 
   public get email() { return this.form.controls.email; }

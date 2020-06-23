@@ -14,8 +14,11 @@
 }
 
 .login-header {
-    display: flex;
-    justify-content: center;
+    height: 175px;
+    background: url(/assets/images/logo/kamino-bakery-logo.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .login-content {

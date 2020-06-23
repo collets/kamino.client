@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AuthRoutingModule } from './auth-routing.module';
@@ -13,6 +10,8 @@ import { BaseAuthService } from '../core/interfaces/base-auth-service';
 import { FirebaseAuthService } from '../firebase-auth/services/firebase-auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from '../core/core.module';
+import { AdminAreaGuard } from './services/admin-area.guard';
 
 
 @NgModule({
@@ -21,18 +20,17 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    CoreModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    MatCardModule,
-    MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule,
     MatProgressSpinnerModule
   ],
   providers: [
     { provide: BaseAuthService, useExisting: FirebaseAuthService },
-    AuthGuard
+    AuthGuard,
+    AdminAreaGuard
   ]
 })
 export class AuthModule { }

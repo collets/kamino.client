@@ -10,6 +10,9 @@ import { FirebaseWarehouseEntriesService } from '../firebase-data/services/wareh
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [],
@@ -17,11 +20,17 @@ import {MatNativeDateModule} from '@angular/material/core';
     CommonModule,
     FirebaseDataModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   exports: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
   ],  
   providers: [
     { provide: IProductService, useExisting: FirebaseProductsService },

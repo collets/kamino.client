@@ -5,6 +5,7 @@ import { IFirebaseAuthServiceState } from '../interfaces/firebase-auth.state.int
 import { User } from 'firebase';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class FirebaseAuthService implements BaseAuthService {
   }
 
   public get logged$(): Observable<boolean> {
-    return this._logged$.asObservable();
+    return this._angulaFireAuth.user.pipe(map(user => !!user));
   }
 
   public get loggedUser(): User | null {

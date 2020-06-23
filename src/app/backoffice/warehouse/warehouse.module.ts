@@ -11,11 +11,9 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
 import { WarehouseEntriesTableComponent } from './components/warehouse-entries-table/warehouse-entries-table.component';
 import { WarehouseEntryDialogComponent } from './components/warehouse-entry-dialog/warehouse-entry-dialog.component';
 
-import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
@@ -38,10 +36,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ReactiveFormsModule,
     WarehouseRoutingModule,
     MatSidenavModule,
-    MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule,
     MatTooltipModule,
     MatDialogModule,
     MatInputModule,
